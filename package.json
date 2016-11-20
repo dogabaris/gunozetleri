@@ -1,0 +1,29 @@
+{
+  "name": "sondurum",
+  "version": "1.0.0",
+  "description": "son durumum",
+  "main": "app.js",
+  "scripts": {
+    "test": "nothin"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dogabaris/infukgraphic.git"
+  },
+  "keywords": [
+    "last",
+    "info"
+  ],
+  "author": "doga",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/dogabaris/infukgraphic/issues"
+  },
+  "homepage": "https://github.com/dogabaris/infukgraphic#readme",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0",
+    "request": "^2.74.0",
+    "twitter": "^1.4.0"
+  }
+}
