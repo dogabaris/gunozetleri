@@ -1,14 +1,14 @@
 {
   "name": "sondurum",
   "version": "1.0.0",
-  "description": "son durumum",
+  "description": "Gün Özetleri, gün içinde yaşanan haberleri özetler şeklinde kullanıcıya sunar.",
   "main": "app.js",
   "scripts": {
-    "test": "nothin"
+    "test": ""
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/dogabaris/infukgraphic.git"
+    "url": "git+https://github.com/dogabaris/gunozetleri.git"
   },
   "keywords": [
     "last",
@@ -17,13 +17,14 @@
   "author": "doga",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/dogabaris/infukgraphic/issues"
+    "url": "https://github.com/dogabaris/gunozetleri/issues"
   },
-  "homepage": "https://github.com/dogabaris/infukgraphic#readme",
+  "homepage": "https://github.com/dogabaris/gunozetleri#readme",
   "dependencies": {
     "body-parser": "^1.15.2",
     "express": "^4.14.0",
-    "request": "^2.74.0",
-    "twitter": "^1.4.0"
+    "request": "^2.79.0",
+    "twitter": "^1.4.0",
+    "instagram-node": "^0.5.8"
   }
 }

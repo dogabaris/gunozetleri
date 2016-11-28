@@ -1,10 +1,14 @@
+
 var express = require('express');
 var app = express();
 var request = require('request');
 var bodyParser = require('body-parser');
 //facebook app token
+var api = require('instagram-node').instagram();
 var token = "EAAZAudLVqZCMEBAHBo7poRvZBLwTOmAWkj5XCN3rhVk1Lgg2FJJFfJNrs59StOwQTjoBQt6YGcrCML524hWikZBPSo0raJE5LyXKeRpqvO1tsN56ldZBdD2NkDgbZBhZBMxY2aGrGTOJjeL7ZBE8zZA2gHO9KHbp26VRr5CPovgxExQZDZD"
 var Twitter = require('twitter');
+
+app.use('/static', express.static('public'))
 
 var client = new Twitter({
   consumer_key: 'qwbOIbEbTvvPIQousRBqa052d',
@@ -14,10 +18,40 @@ var client = new Twitter({
 });
 
 //örnek fotoğraf
-var data = require('fs').readFileSync('gazete-mansetleri.jpg');
+var data = require('fs').readFileSync('public/gazete-mansetleri.jpg');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended : true}));
+
+//instagram Api
+api.use({
+  client_id: '669dff7292844cfd9f6aca058b757a22',
+  client_secret: 'f57cdde34d0c423985bb90476718bba7'
+});
+
+var redirect_uri = 'http://sondurum-89701.onmodulus.net/handleauth';
+
+//instagram
+exports.authorize_user = function(req, res) {
+  res.redirect(api.get_authorization_url(redirect_uri, { scope: ['likes'], state: 'a state' }));
+};
+
+exports.handleauth = function(req, res) {
+  api.authorize_user(req.query.code, redirect_uri, function(err, result) {
+    if (err) {
+      console.log(err.body);
+      res.send("Token Alınamadı!");
+    } else {
+      console.log('Access token is ' + result.access_token);
+      res.send('Çalışıyor');
+    }
+  });
+};
+
+// This is where you would initially send users to authorize
+app.get('/authorize_user', exports.authorize_user);
+// This is your redirect URI
+app.get('/handleauth', exports.handleauth);
 
 // Web sayfası çalışırlık testi
 app.get('/', function(req , res){
@@ -95,11 +129,12 @@ function sendPagePost(sender, text) {
 		text: text
 	};
 	request({
-		url: "https://graph.facebook.com/v2.8/1676849415962995/feed",
+		url: "https://graph.facebook.com/v2.8/1676849415962995/photos",
 		qs: { access_token: token },
 		method: "POST",
 		json: {
-			message: "Gün Özeti"
+			url: "http://sondurum-89701.onmodulus.net/static/gazete-mansetleri.jpg",
+      caption: "Gün Özeti http://www.hurriyet.com"
 		}
 	}, function(error, response, body) {
 		if (error) {
@@ -182,8 +217,8 @@ function sendGenericMessage(recipientId) {
         payload: {
           template_type: "generic",
           elements: [{
-            title: "Haber Başlığı",
-            subtitle: "Haber Özeti",
+            title: "Haber BaşlığıHaber BaşlığıHaber BaşlığıHaber BaşlığıHaber BaşlığıHaber BaşlığıHaber BaşlığıHaber BaşlığıHaber BaşlığıHaber BaşlığıHaber BaşlığıHaber BaşlığıHaber BaşlığıHaber BaşlığıHaber Başlığı",
+            subtitle: "Haber ÖzetiHaber ÖzetiHaber ÖzetiHaber ÖzetiHaber ÖzetiHaber ÖzetiHaber ÖzetiHaber ÖzetiHaber ÖzetiHaber ÖzetiHaber ÖzetiHaber ÖzetiHaber ÖzetiHaber ÖzetiHaber ÖzetiHaber ÖzetiHaber ÖzetiHaber ÖzetiHaber ÖzetiHaber ÖzetiHaber Özeti",
             item_url: "https://www.oculus.com/en-us/rift/",
             image_url: "http://messengerdemo.parseapp.com/img/rift.png",
             buttons: [{
