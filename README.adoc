@@ -1,6 +1,6 @@
 # Gün Özetleri
 
-=== Server: http://sondurum-89701.onmodulus.net/
+=== Server: http://apiornekleri-95177.app.xervo.io/
 
 === Twitter: https://www.twitter.com/gunozetleri
 
