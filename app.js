@@ -5,16 +5,16 @@ var request = require('request');
 var bodyParser = require('body-parser');
 //facebook app token
 var api = require('instagram-node').instagram();
-var token = "EAAZAudLVqZCMEBAHBo7poRvZBLwTOmAWkj5XCN3rhVk1Lgg2FJJFfJNrs59StOwQTjoBQt6YGcrCML524hWikZBPSo0raJE5LyXKeRpqvO1tsN56ldZBdD2NkDgbZBhZBMxY2aGrGTOJjeL7ZBE8zZA2gHO9KHbp26VRr5CPovgxExQZDZD"
+var token = ""
 var Twitter = require('twitter');
 
 app.use('/static', express.static('public'))
 
 var client = new Twitter({
-  consumer_key: 'qwbOIbEbTvvPIQousRBqa052d',
-  consumer_secret: '1mOQ8dViOgw0o0kxxJUSaH4XJqumQhpyAF7kcRD7RCyRxmphiq',
-  access_token_key: '800381920840253441-WpG2dQJESMvynDj1BTwRZOo7JKI0LYO',
-  access_token_secret: 'EkQtQDv4mwoHX1jtEZsiJeZA6evlnAGNOcE1vYZydLDrr'
+  consumer_key: '',
+  consumer_secret: '',
+  access_token_key: '',
+  access_token_secret: ''
 });
 
 //örnek fotoğraf
@@ -25,8 +25,8 @@ app.use(bodyParser.urlencoded({extended : true}));
 
 //instagram Api
 api.use({
-  client_id: '669dff7292844cfd9f6aca058b757a22',
-  client_secret: 'f57cdde34d0c423985bb90476718bba7'
+  client_id: '',
+  client_secret: ''
 });
 
 var redirect_uri = 'http://sondurum-89701.onmodulus.net/handleauth';
